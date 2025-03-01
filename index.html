@@ -267,6 +267,15 @@
             font-weight: 600;
         }
         
+        /* Mobile Buttons */
+        .mobile-portfolio-btn {
+            display: none;
+        }
+        
+        .mobile-style-btn {
+            /* Default styling remains the same on desktop */
+        }
+        
         @media (max-width: 960px) {
             .chains-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -280,6 +289,31 @@
             
             .nav-links {
                 display: none;
+            }
+            
+            .mobile-portfolio-btn,
+            .mobile-style-btn {
+                display: block;
+                margin: 1rem auto 0 auto;
+                width: 80%;
+                max-width: 320px;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .mobile-style-btn {
+                background-color: white !important;
+                color: black !important;
+                border: 1px solid #0f172a !important;
+                font-size: 0.9rem;
+                font-weight: 600;
+                padding: 0.8rem 1.8rem;
+                margin-top: 2.5rem;
+            }
+            
+            .mobile-style-btn:hover {
+                background-color: #f0f0f0 !important;
+                color: black !important;
             }
         }
         
@@ -331,7 +365,17 @@
         <div class="container">
             <h1>Comprehensive Solidity Smart Contract Audits for Worry-Free Nights</h1>
             <p>We identify vulnerabilities before attackers do. Our expert team provides in-depth security assessments and actionable remediation plans.</p>
-            <a href="https://t.me/RobustSol" target="_blank" class="btn">Request Audit</a>
+            <a href="https://t.me/RobustSol" target="_blank" class="btn mobile-style-btn">REQUEST AUDIT</a>
+            <a href="https://github.com/AntoanRusinov/audits" target="_blank" class="portfolio-btn portfolio-btn-alt mobile-portfolio-btn">
+                AUDIT PORTFOLIO
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button-icon">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+            </a>
         </div>
     </section>
     
