@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robust Solutions — Antoan Rusinov | Fintech Backend Engineering</title>
+    <meta name="description"
+        content="Independent backend engineering consultancy of Antoan Rusinov. 15 years building trading, settlement and banking systems for UBS, Euroclear, Financial Times, Sportradar, CMC Markets and Trading 212. Contract engineering and fixed-scope architecture reviews.">
+    <meta name="author" content="Antoan Rusinov">
+    <meta name="theme-color" content="#131824">
+    <link rel="canonical" href="https://rsol.tech/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rsol.tech/">
+    <meta property="og:site_name" content="Robust Solutions">
+    <meta property="og:title" content="Robust Solutions — Fintech Backend Engineering">
+    <meta property="og:description"
+        content="Senior backend engineering for financial platforms. Contract engagements and fixed-scope architecture reviews by Antoan Rusinov — 15 years across UBS, Euroclear, Financial Times, Sportradar and CMC Markets.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Robust Solutions — Fintech Backend Engineering">
+    <meta name="twitter:description"
+        content="Senior backend engineering for financial platforms. Contract engagements and fixed-scope architecture reviews.">
+
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131824'/%3E%3Crect width='64' height='64' rx='14' fill='none' stroke='%235b95ff' stroke-width='3'/%3E%3Ctext x='32' y='45' font-family='-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif' font-size='38' font-weight='700' text-anchor='middle' fill='%235b95ff'%3ER%3C/text%3E%3C/svg%3E">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Robust Solutions",
+        "url": "https://rsol.tech/",
+        "description": "Independent backend engineering consultancy specialised in fintech: contract engineering and fixed-scope backend architecture reviews.",
+        "founder": {
+            "@type": "Person",
+            "name": "Antoan Rusinov",
+            "jobTitle": "Senior Backend Engineer",
+            "sameAs": [
+                "https://www.linkedin.com/in/antoanrusinov/",
+                "https://github.com/AntoanRusinov"
+            ]
+        },
+        "areaServed": "Europe",
+        "knowsAbout": [
+            "Backend engineering",
+            "Fintech",
+            "Core banking",
+            "Event-driven architecture",
+            "Domain-driven design",
+            "Apache Kafka",
+            "Java",
+            "Kotlin",
+            "Go",
+            "Kubernetes",
+            "AWS",
+            "PostgreSQL"
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #131824;
+            --bg-raised: #1a2130;
+            --border: #29334a;
+            --border-strong: #38445f;
+            --text: #eef1f6;
+            --text-muted: #a8b3c7;
+            --text-faint: #8492ab;
+            --accent: #5b95ff;
+            --accent-hover: #78a8ff;
+            --accent-soft: rgba(91, 149, 255, 0.14);
+            --mono: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        ::selection {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        section[id],
+        div[id] {
+            scroll-margin-top: 5rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            z-index: 200;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.6rem 1rem;
+            border-radius: 0 0 6px 0;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            left: 0;
+        }
+
+        /* ---------- Header ---------- */
+        header {
+            border-bottom: 1px solid var(--border);
+            background-color: rgba(19, 24, 36, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 0;
+        }
+
+        .wordmark {
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+            color: var(--text);
+        }
+
+        .wordmark:hover {
+            text-decoration: none;
+        }
+
+        .wordmark span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-cta {
+            border: 1px solid var(--border-strong);
+            border-radius: 6px;
+            padding: 0.45rem 0.9rem;
+            color: var(--text) !important;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        .nav-cta:hover {
+            border-color: var(--accent);
+            background-color: var(--accent-soft);
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            padding: 6.5rem 0 5rem;
+            background:
+                radial-gradient(ellipse 60% 50% at 70% 0%, rgba(91, 149, 255, 0.1), transparent 70%);
+        }
+
+        .kicker {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 750;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            max-width: 720px;
+            margin-bottom: 1.5rem;
+            text-wrap: balance;
+        }
+
+        .hero .lede {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 640px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero .lede strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, border-color 0.2s, transform 0.15s;
+        }
+
+        .btn:hover {
+            text-decoration: none;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-strong);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background-color: var(--accent-soft);
+        }
+
+        /* ---------- Client logo wall ---------- */
+        .logo-wall {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .logo-chip {
+            background-color: #f4f6fa;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem 1.5rem;
+            height: 96px;
+            transition: transform 0.2s;
+        }
+
+        .logo-chip:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-chip img {
+            max-height: 40px;
+            max-width: 75%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-chip.logo-tall {
+            padding: 0.4rem 1rem;
+        }
+
+        .logo-chip.logo-tall img {
+            max-height: 82px;
+        }
+
+        .logo-chip.logo-square img {
+            max-height: 58px;
+        }
+
+        /* ---------- Stack groups ---------- */
+        .stack-groups {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .stack-group {
+            background-color: var(--bg-raised);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.4rem 1.5rem;
+        }
+
+        .stack-more {
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .stack-group .group-label {
+            display: block;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.9rem;
+        }
+
+        /* ---------- Sections ---------- */
+        section {
+            padding: 4.5rem 0;
+        }
+
+        section + section {
+            border-top: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-intro {
+            color: var(--text-muted);
+            max-width: 640px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ---------- Expertise grid ---------- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .card {
+            background-color: var(--bg-raised);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.02rem;
+            font-weight: 650;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.93rem;
+        }
+
+        /* ---------- Stack ---------- */
+        .stack-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            list-style: none;
+        }
+
+        .tag {
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border-strong);
+            border-radius: 999px;
+            padding: 0.35rem 0.85rem;
+            white-space: nowrap;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .tag:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        /* ---------- Services ---------- */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            align-items: stretch;
+        }
+
+        .service {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg-raised);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .service.featured {
+            border-color: var(--accent);
+            background:
+                linear-gradient(180deg, rgba(91, 149, 255, 0.06), transparent 40%),
+                var(--bg-raised);
+        }
+
+        .service .service-kicker {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .service h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .service > p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .service ul {
+            list-style: none;
+            margin-bottom: 1.75rem;
+        }
+
+        .service li {
+            position: relative;
+            padding-left: 1.4rem;
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .service li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 2px;
+            background-color: var(--accent);
+            opacity: 0.8;
+        }
+
+        .service .meta {
+            margin-top: auto;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .service .meta .terms {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--text-faint);
+        }
+
+        .service .meta a {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ---------- How I work ---------- */
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            counter-reset: principle;
+        }
+
+        .principle {
+            counter-increment: principle;
+        }
+
+        .principle::before {
+            content: "0" counter(principle);
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .principle h3 {
+            font-size: 1rem;
+            font-weight: 650;
+            margin-bottom: 0.4rem;
+        }
+
+        .principle p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ---------- Contact ---------- */
+        .contact-card {
+            background:
+                radial-gradient(ellipse 70% 90% at 50% 0%, rgba(91, 149, 255, 0.08), transparent 70%),
+                var(--bg-raised);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .contact-card h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            max-width: 520px;
+            margin: 0 auto 1.75rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0 2.5rem;
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        footer .copy {
+            color: var(--text-faint);
+            font-size: 0.85rem;
+        }
+
+        footer .links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        footer .links a {
+            color: var(--text-faint);
+            font-size: 0.85rem;
+        }
+
+        footer .links a:hover {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 760px) {
+            .nav-links a:not(.nav-cta) {
+                display: none;
+            }
+
+            section {
+                padding: 3.25rem 0;
+            }
+
+            .hero {
+                padding: 4.5rem 0 3.5rem;
+            }
+
+            .grid,
+            .services,
+            .principles {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-wall {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stack-groups {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header>
+        <div class="container">
+            <nav class="nav" aria-label="Main navigation">
+                <a class="wordmark" href="#" aria-label="Robust Solutions — home">Robust<span>Solutions</span></a>
+                <div class="nav-links">
+                    <a href="#clients">Clients</a>
+                    <a href="#services">Services</a>
+                    <a href="#approach">Approach</a>
+                    <a class="nav-cta" href="#contact">Get in touch</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="container">
+                <p class="kicker">Fintech backend engineering · Contract &amp; consulting</p>
+                <h1 id="hero-heading">Backend systems for financial platforms, built by someone who has shipped them
+                    for 15 years.</h1>
+                <p class="lede">
+                    Robust Solutions is the independent consultancy of <strong>Antoan Rusinov</strong> — a senior
+                    backend engineer specialised in trading, settlement and market-data systems. I join teams as a
+                    hands-on contractor, or deliver fixed-scope architecture reviews for platforms that need a
+                    second pair of experienced eyes.
+                </p>
+                <div class="cta-row">
+                    <a class="btn btn-primary" href="#contact">Start a conversation</a>
+                    <a class="btn btn-secondary" href="#services">See how I can help</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="clients" aria-labelledby="clients-heading">
+            <div class="container">
+                <h2 id="clients-heading">Companies that trusted me</h2>
+                <p class="section-intro">Banks, exchanges, media and data platforms — engagements delivered directly
+                    or through consultancy partners.</p>
+                <ul class="logo-wall">
+                    <li class="logo-chip"><img src="logos/ubs.svg" alt="UBS" loading="lazy"></li>
+                    <li class="logo-chip logo-square"><img src="logos/euroclear.png" alt="Euroclear" loading="lazy"></li>
+                    <li class="logo-chip"><img src="logos/leumi.svg" alt="Bank Leumi" loading="lazy"></li>
+                    <li class="logo-chip"><img src="logos/awaed.png" alt="Awaed Bank" loading="lazy"></li>
+                    <li class="logo-chip"><img src="logos/cmc.svg" alt="CMC Markets" loading="lazy"></li>
+                    <li class="logo-chip"><img src="logos/trading212.svg" alt="Trading 212" loading="lazy"></li>
+                    <li class="logo-chip logo-tall"><img src="logos/ft.svg" alt="Financial Times" loading="lazy"></li>
+                    <li class="logo-chip"><img src="logos/sportradar.svg" alt="Sportradar" loading="lazy"></li>
+                    <li class="logo-chip"><img src="logos/cargill.svg" alt="Cargill" loading="lazy"></li>
+                    <li class="logo-chip"><img src="logos/epam.png" alt="EPAM Systems" loading="lazy"></li>
+                    <li class="logo-chip"><img src="logos/scalefocus.svg" alt="ScaleFocus" loading="lazy"></li>
+                    <li class="logo-chip"><img src="logos/softserve.svg" alt="SoftServe" loading="lazy"></li>
+                    <li class="logo-chip"><img src="logos/emc.png" alt="Emerging Markets Consulting" loading="lazy"></li>
+                    <li class="logo-chip logo-square"><img src="logos/egt.svg" alt="EGT — Euro Games Technology" loading="lazy"></li>
+                    <li class="logo-chip"><img src="logos/shutterfly.svg" alt="Shutterfly" loading="lazy"></li>
+                </ul>
+            </div>
+        </section>
+
+        <section aria-labelledby="expertise-heading">
+            <div class="container">
+                <h2 id="expertise-heading">What I do</h2>
+                <p class="section-intro">
+                    Fifteen years of backend engineering, most of it in environments where correctness, latency and
+                    auditability are non-negotiable: core banking, post-trade settlement, CFD trading, real-time
+                    sports data and high-traffic publishing.
+                </p>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Event-driven &amp; distributed systems</h3>
+                        <p>Designing and operating Kafka-based pipelines, CQRS and event-sourced services, and the
+                            delivery guarantees, idempotency and replay semantics that make them trustworthy in
+                            production.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Domain-driven design in finance</h3>
+                        <p>Modelling settlement, order management and risk domains so the code speaks the business
+                            language — boundaries that survive regulation changes and team growth.</p>
+                    </div>
+                    <div class="card">
+                        <h3>High-throughput, low-latency services</h3>
+                        <p>Market-data ingestion, pricing and real-time feeds where throughput is measured in the
+                            thousands of events per second and a slow consumer is an incident.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Legacy modernisation</h3>
+                        <p>Incrementally carving services out of monoliths without stopping delivery — strangler
+                            migrations, contract-first APIs and test harnesses around code nobody dares touch.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="stack-heading">
+            <div class="container">
+                <h2 id="stack-heading">Stack</h2>
+                <p class="section-intro">Pragmatic about tools, opinionated about fundamentals. Day to day:</p>
+                <div class="stack-groups">
+                    <div class="stack-group">
+                        <span class="group-label">Languages</span>
+                        <ul class="stack-list">
+                            <li class="tag">Java</li>
+                            <li class="tag">Kotlin</li>
+                            <li class="tag">Go</li>
+                            <li class="tag">SQL</li>
+                            <li class="tag">Shell</li>
+                            <li class="tag">Groovy</li>
+                            <li class="tag">Solidity</li>
+                            <li class="tag">Move</li>
+                        </ul>
+                    </div>
+                    <div class="stack-group">
+                        <span class="group-label">Frameworks &amp; libraries</span>
+                        <ul class="stack-list">
+                            <li class="tag">Spring Boot</li>
+                            <li class="tag">Spring Cloud</li>
+                            <li class="tag">Spring Security</li>
+                            <li class="tag">Hibernate / JPA</li>
+                            <li class="tag">MyBatis</li>
+                            <li class="tag">Protobuf</li>
+                            <li class="tag">JUnit / TestNG</li>
+                            <li class="tag">Swagger / OpenAPI</li>
+                        </ul>
+                    </div>
+                    <div class="stack-group">
+                        <span class="group-label">Messaging &amp; streaming</span>
+                        <ul class="stack-list">
+                            <li class="tag">Apache Kafka</li>
+                            <li class="tag">Apache Pulsar</li>
+                            <li class="tag">RabbitMQ</li>
+                            <li class="tag">ActiveMQ</li>
+                            <li class="tag">Amazon SQS / SNS</li>
+                            <li class="tag">JMS</li>
+                            <li class="tag">WebSockets / STOMP</li>
+                        </ul>
+                    </div>
+                    <div class="stack-group">
+                        <span class="group-label">Databases &amp; storage</span>
+                        <ul class="stack-list">
+                            <li class="tag">PostgreSQL</li>
+                            <li class="tag">Oracle</li>
+                            <li class="tag">MySQL / MariaDB</li>
+                            <li class="tag">MongoDB</li>
+                            <li class="tag">Redis</li>
+                            <li class="tag">Cassandra</li>
+                            <li class="tag">Neo4j</li>
+                            <li class="tag">Apache Ignite</li>
+                            <li class="tag">QuestDB</li>
+                            <li class="tag">TimescaleDB</li>
+                            <li class="tag">Elasticsearch</li>
+                            <li class="tag">DynamoDB</li>
+                        </ul>
+                    </div>
+                    <div class="stack-group">
+                        <span class="group-label">Cloud &amp; DevOps</span>
+                        <ul class="stack-list">
+                            <li class="tag">AWS · EKS · MSK · Lambda</li>
+                            <li class="tag">GCP</li>
+                            <li class="tag">Azure</li>
+                            <li class="tag">Kubernetes</li>
+                            <li class="tag">Docker</li>
+                            <li class="tag">Terraform</li>
+                            <li class="tag">CloudFormation</li>
+                            <li class="tag">GitHub Actions</li>
+                            <li class="tag">Jenkins</li>
+                            <li class="tag">CircleCI</li>
+                        </ul>
+                    </div>
+                    <div class="stack-group">
+                        <span class="group-label">Observability &amp; performance</span>
+                        <ul class="stack-list">
+                            <li class="tag">Prometheus</li>
+                            <li class="tag">Grafana</li>
+                            <li class="tag">ELK Stack</li>
+                            <li class="tag">New Relic</li>
+                            <li class="tag">JMX / VisualVM</li>
+                            <li class="tag">JVM tuning</li>
+                            <li class="tag">Distributed caching</li>
+                        </ul>
+                    </div>
+                    <div class="stack-group">
+                        <span class="group-label">Security</span>
+                        <ul class="stack-list">
+                            <li class="tag">OAuth2 / JWT</li>
+                            <li class="tag">Single Sign-On</li>
+                            <li class="tag">Spring Security</li>
+                            <li class="tag">Vault</li>
+                            <li class="tag">TLS / cryptography</li>
+                            <li class="tag">OWASP</li>
+                            <li class="tag">PCI DSS</li>
+                            <li class="tag">GDPR</li>
+                            <li class="tag">Application security</li>
+                            <li class="tag">Network security</li>
+                            <li class="tag">Static code analysis</li>
+                            <li class="tag">Smart contract audits</li>
+                        </ul>
+                    </div>
+                    <div class="stack-group">
+                        <span class="group-label">Practices &amp; architecture</span>
+                        <ul class="stack-list">
+                            <li class="tag">Domain-Driven Design</li>
+                            <li class="tag">CQRS / Event Sourcing</li>
+                            <li class="tag">Event-driven architecture</li>
+                            <li class="tag">Microservices</li>
+                            <li class="tag">Monolith migrations</li>
+                            <li class="tag">Low latency</li>
+                            <li class="tag">High availability</li>
+                            <li class="tag">TDD / integration testing</li>
+                            <li class="tag">Blockchain / EVM</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="stack-more">And many, many more…</p>
+            </div>
+        </section>
+
+        <section id="services" aria-labelledby="services-heading">
+            <div class="container">
+                <h2 id="services-heading">Ways of working together</h2>
+                <p class="section-intro">Two engagement models, both remote-first from the EU (Bulgaria, EET).</p>
+                <div class="services">
+                    <article class="service">
+                        <p class="service-kicker">Ongoing</p>
+                        <h3>Contract engineering</h3>
+                        <p>I embed with your team as a senior backend engineer — shipping features, raising the bar
+                            on architecture and mentoring along the way.</p>
+                        <ul>
+                            <li>Hands-on delivery in Java, Kotlin or Go</li>
+                            <li>Architecture ownership for critical services</li>
+                            <li>End-to-end ownership: design, delivery and production support</li>
+                            <li>Monolith-to-microservices and cloud migrations</li>
+                            <li>Production mindset: observability, on-call readiness, runbooks</li>
+                            <li>Security-first habits from regulated environments</li>
+                            <li>Knowledge transfer and mentoring built into the engagement</li>
+                            <li>Fast ramp-up — productive in the first week</li>
+                        </ul>
+                        <div class="meta">
+                            <span class="terms">Day rate · 3+ month engagements</span>
+                            <a href="#contact">Check availability →</a>
+                        </div>
+                    </article>
+                    <article class="service featured">
+                        <p class="service-kicker">Fixed scope</p>
+                        <h3>Backend architecture review</h3>
+                        <p>A structured assessment of your fintech backend — typically two weeks, scoped to fit
+                            your platform — for CTOs who need an independent, experienced read on where the risks
+                            are before they become incidents.</p>
+                        <ul>
+                            <li>Deep dive into architecture, code and infrastructure</li>
+                            <li>Collaboration and discussions with your engineers — context, not just code</li>
+                            <li>Written report: risks ranked by impact, with concrete fixes</li>
+                            <li>Prioritised 6-month technical roadmap</li>
+                            <li>Walkthrough session with your team, plus 30 days of follow-up questions</li>
+                            <li>Option to stay on and implement the roadmap together</li>
+                        </ul>
+                        <div class="meta">
+                            <span class="terms">Fixed fee · typically 2 weeks</span>
+                            <a href="#contact">Request a review →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="approach" aria-labelledby="approach-heading">
+            <div class="container">
+                <h2 id="approach-heading">How I work</h2>
+                <div class="principles">
+                    <div class="principle">
+                        <h3>Business first</h3>
+                        <p>Architecture serves the P&amp;L. Every technical recommendation comes with the business
+                            case for making it — and for when not to.</p>
+                    </div>
+                    <div class="principle">
+                        <h3>Boring where it counts</h3>
+                        <p>Proven technology for the critical path, innovation where it buys you something. No
+                            résumé-driven architecture.</p>
+                    </div>
+                    <div class="principle">
+                        <h3>Leave the team stronger</h3>
+                        <p>Documentation, pairing and decision records are part of the work, not an afterthought.
+                            The goal is that you need me less over time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-heading">
+            <div class="container">
+                <div class="contact-card">
+                    <h2 id="contact-heading">Let's talk</h2>
+                    <p>Whether you need a senior contractor next quarter or an independent review of your platform
+                        this month — a short call is the fastest way to find out if I can help.</p>
+                    <div class="contact-links">
+                        <a class="btn btn-primary" id="email-link" href="#contact">Email me</a>
+                        <a class="btn btn-secondary" href="https://www.linkedin.com/in/antoanrusinov/" target="_blank"
+                            rel="noopener">LinkedIn</a>
+                        <a class="btn btn-secondary" href="https://github.com/AntoanRusinov" target="_blank"
+                            rel="noopener">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <span class="copy">© 2026 Robust Solutions · Antoan Rusinov</span>
+            <div class="links">
+                <a href="#clients">Clients</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var link = document.getElementById('email-link');
+            if (!link) return;
+            var user = ['an', 'to', 'an', '.ru', 'si', 'nov'].join('');
+            var host = ['gm', 'ail', '.c', 'om'].join('');
+            var addr = user + String.fromCharCode(64) + host;
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.location.href = 'mail' + 'to:' + addr;
+            });
+        })();
+    </script>
+</body>
+
+</html>
